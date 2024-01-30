@@ -1,0 +1,56 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-srv
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+spec:
+  rules:
+    - host: chatsphere.com
+      http:
+        paths:
+          - path: /api/users/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: user-auth-clusterip-srv
+                port: 
+                  number: 4000
+          - path: /api/users/chats/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: chats-srv
+                port: 
+                  number: 4001
+          - path: /api/users/message/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: messages-srv
+                port: 
+                  number: 4002
+          - path: /api/users/posts/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: posts-srv
+                port: 
+                  number: 4003
+          - path: /api/users/tags/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: trend-tags-srv
+                port: 
+                  number: 4004
+          - path: /?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: client-srv
+                port: 
+                  number: 3000
+          
+          

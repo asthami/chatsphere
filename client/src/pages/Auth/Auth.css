@@ -1,0 +1,180 @@
+
+
+.Auth {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  height: 100vh;
+  gap: 4rem;
+  position: relative;
+  background-image:url("back.jpeg");
+  background-size: cover;
+}
+.text{
+ display: flex;
+ flex-flow:column;
+  color: white;
+  justify-content:center;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 40px;
+  font-style: italic;
+
+}
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600");
+
+:root {
+  --bar-scale-y: 0;
+  --sparkle-color: rgb(253 244 215 / 40%);
+}
+
+@keyframes pop-word {
+  to {
+    transform: rotateX(0);
+  }
+}
+
+@keyframes show {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bar-scale {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(0);
+  }
+
+  60% {
+    transform: scale(1) translate(4px, 1px) rotate(8deg);
+  }
+
+  100% {
+    transform: scale(0) translate(4px, 1px) rotate(8deg);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    text-shadow: 0 0 8px red;
+  }
+}
+
+
+h1 {
+  color: white;
+  font-family: "Playfair Display", Vidaloka, serif;
+  font-size: 8rem;
+
+  line-height: 0.85;
+  perspective: 500px;
+}
+
+.word {
+  display: block;
+
+  animation: show 0.01s forwards, pop-word 1.5s forwards;
+  animation-timing-function: cubic-bezier(0.14, 1.23, 0.33, 1.16);
+  opacity: 0;
+
+  transform: rotateX(120deg);
+  transform-origin: 50% 100%;
+}
+
+.word:nth-of-type(2) {
+  padding: 0 2rem;
+
+  animation-delay: 1.5s;
+  
+
+  color:#a05bfa;
+}
+
+.par{
+  padding-left: 150px;
+  
+}
+
+.Auth > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 167px;
+  padding:90px;
+
+}
+.Auth > div > form {
+  padding-right: 10px;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 10px;
+  color: white;
+  
+}
+
+.Logos{
+  height: 45px;
+  padding-left: 10px;
+}
+
+.a-left{
+    gap: 2rem;
+}
+
+.a-left > img {
+  width: 23rem;
+  height: 4.5rem;
+}
+
+.Webname > h1 {
+    font-size: 3rem;
+    background-color: red;
+  
+    /* Create the gradient. */
+    background-image: var(--buttonBg);
+    
+    /* Set the background size and repeat properties. */
+    background-size: 100%;
+    background-repeat: repeat;
+  
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+.Webname>h6{
+    font-size: 0.85rem;
+}
+
+
+
+/* right side */
+
+
+.authForm{
+  
+    border-radius: 1rem;
+    padding: 2rem;
+    color: white;
+}
+
+.authForm>div{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    
+}
+.authForm>div>input{
+  color: white;
+
+}

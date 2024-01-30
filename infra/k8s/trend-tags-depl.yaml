@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trend-tags-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trend-tags
+  template:
+    metadata:
+      labels:
+        app: trend-tags
+    spec:
+      containers:
+        - name: trend-tags
+          image: us.gcr.io/airy-discovery-349015/trend-tags
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: trend-tags-srv
+spec:
+  selector:
+    app: trend-tags
+  ports:
+    - name: trend-tags
+      protocol: TCP
+      port: 4004
+      targetPort: 4004

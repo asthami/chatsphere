@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: chatsphere-mongo-depl
+spec:
+  serviceName: chatsphere-mongo-srv
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatsphere-mongo
+  template:
+    metadata:
+      labels:
+        app: chatsphere-mongo
+    spec:
+      containers:
+        - name: chatsphere-mongo
+          image: mongo
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: pvc
+              mountPath: /data/db
+  volumeClaimTemplates:
+    - metadata:
+        name: pvc
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatsphere-mongo-srv
+spec:
+  selector:
+    app: chatsphere-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017

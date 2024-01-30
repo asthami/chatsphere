@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chats-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chats
+  template:
+    metadata:
+      labels:
+        app: chats
+    spec:
+      containers:
+        - name: chats
+          image: us.gcr.io/airy-discovery-349015/chats
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chats-srv
+spec:
+  selector:
+    app: chats
+  ports:
+    - name: chats
+      protocol: TCP
+      port: 4001
+      targetPort: 4001

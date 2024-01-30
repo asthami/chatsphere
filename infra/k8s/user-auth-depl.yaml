@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-auth-depl
+spec:
+  replicas: 
+  selector:
+    matchLabels:
+      app: user-auth
+  template:
+    metadata:
+      labels:
+        app: user-auth
+    spec:
+      containers:
+        - name: user-auth
+          image: us.gcr.io/airy-discovery-349015/user-auth
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-auth-clusterip-srv
+spec:
+  selector:
+    app: user-auth
+  ports:
+    - name: user-auth
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
